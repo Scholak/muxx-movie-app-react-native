@@ -5,6 +5,22 @@ module.exports = {
 	presets: [require('nativewind/preset')],
 	theme: {
 		extend: {
+			colors: {
+				primary: '#ADEA00',
+				dark: '#0A0A0A',
+				'dark-gray': '#151515',
+				gray: '#808080',
+				'steel-gray': '#656565',
+				'light-gray': '#9A9A9A',
+				'off-white': '#F4F4F4',
+			},
+			borderRadius: {
+				'2xl': '1.25rem',
+			},
+			fontSize: {
+				'3xl': '2rem',
+				'5xl': '3.5rem',
+			},
 			fontFamily: {
 				'inter-bold': ['InterBold'],
 				'inter-extra-bold': ['InterExtraBold'],
