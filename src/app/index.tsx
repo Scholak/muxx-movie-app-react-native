@@ -9,7 +9,7 @@ export default function Index() {
 				alignItems: 'center',
 			}}
 		>
-			<Text>Muxx Streaming App</Text>
+			<Text className='text-red-500 text-4xl'>Muxx Streaming App</Text>
 		</View>
 	)
 }
