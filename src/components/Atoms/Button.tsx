@@ -25,7 +25,7 @@ const variants = {
 		text: '',
 	},
 	secondary: {
-		box: 'bg-dark',
+		box: '',
 		text: 'text-white',
 	},
 }
