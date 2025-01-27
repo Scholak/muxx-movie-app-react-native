@@ -20,7 +20,7 @@ type ITypographyProps = {
 const sizes = {
 	'5xl': 'text-5xl leading-none', // 56px
 	'4xl': 'text-4xl', // 36px
-	'3xl': 'text-3xl leading-9', // 32px
+	'3xl': 'text-3xl leading-10', // 32px
 	'2xl': 'text-2xl', // 24px
 	xl: 'text-xl', // 20px
 	lg: 'text-lg', // 18px
