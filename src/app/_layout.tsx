@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 import { useFonts } from 'expo-font'
 import { StatusBar } from 'expo-status-bar'
-import { SplashScreen, Stack } from 'expo-router'
+import { Slot, SplashScreen } from 'expo-router'
 
 // Asset Imports
 import '../global.css'
@@ -30,7 +30,7 @@ export default function RootLayout() {
 	return (
 		<>
 			<StatusBar style='light' />
-			<Stack screenOptions={{ headerShown: false }} />
+			<Slot />
 		</>
 	)
 }

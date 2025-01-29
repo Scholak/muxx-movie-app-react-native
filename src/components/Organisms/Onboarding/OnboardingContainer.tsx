@@ -1,6 +1,7 @@
 // Package Imports
 import { useState } from 'react'
 import { View } from 'react-native'
+import { useRouter } from 'expo-router'
 
 // Component Imports
 import Logo from '@/src/components/Atoms/Logo'
@@ -9,6 +10,8 @@ import StepIndicator from '@/src/components/Molecules/Onboarding/StepIndicator'
 import OnboardingScroller from '@/src/components/Molecules/Onboarding/OnboardingScroller'
 
 const OnboardingContainer = () => {
+	const router = useRouter()
+
 	const [step, setStep] = useState<1 | 2 | 3 | 4>(1)
 
 	return (
@@ -21,13 +24,13 @@ const OnboardingContainer = () => {
 					<Button
 						variant='primary'
 						size='lg'
-						onPress={() => {}}
+						onPress={() => router.push('/subscription')}
 						text='Sign Up'
 					/>
 					<Button
 						variant='secondary'
 						size='lg'
-						onPress={() => {}}
+						onPress={() => router.push('/signin')}
 						text='Sign In'
 					/>
 				</View>

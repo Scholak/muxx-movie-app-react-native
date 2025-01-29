@@ -33,7 +33,7 @@ const Input = ({ value, error, placeholder, secureTextEntry, style, className, o
 				placeholderTextColor='#656565'
 				className={cn(
 					'p-4 bg-dark-gray text-white rounded-2xl placeholder:font-inter-regular',
-					!!error && 'border-red-500',
+					!!error && 'border border-red-500',
 					className,
 				)}
 				placeholder={placeholder}
