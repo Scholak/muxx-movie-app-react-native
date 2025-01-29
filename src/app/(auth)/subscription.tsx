@@ -1,5 +1,6 @@
 // Package Imports
 import { View } from 'react-native'
+import { useRouter } from 'expo-router'
 import AntDesign from '@expo/vector-icons/AntDesign'
 
 // Component Imports
@@ -8,6 +9,8 @@ import Button from '@/src/components/Atoms/Button'
 import Typography from '@/src/components/Atoms/Typography'
 
 const Subscription = () => {
+	const router = useRouter()
+
 	return (
 		<View className='flex-1 gap-6 px-5 py-10 bg-dark'>
 			{/* Monthly Subscription */}
@@ -65,7 +68,7 @@ const Subscription = () => {
 				</View>
 				<Button
 					variant='primary'
-					onPress={() => {}}
+					onPress={() => router.push('/signup')}
 					text='Monthly'
 				/>
 			</Card>
@@ -98,7 +101,7 @@ const Subscription = () => {
 				</View>
 				<Button
 					variant='primary'
-					onPress={() => {}}
+					onPress={() => router.push('/signup')}
 					text='Yearly'
 				/>
 			</Card>

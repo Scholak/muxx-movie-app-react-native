@@ -15,7 +15,6 @@ const SignIn = () => {
 			<Input
 				onChange={() => {}}
 				placeholder='Password'
-				className='h-14'
 				secureTextEntry
 			/>
 			<Button
