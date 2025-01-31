@@ -21,6 +21,14 @@ export default function RootLayout() {
 				name='signup-success'
 				options={{ headerShown: false }}
 			/>
+			<Stack.Screen
+				name='reset-password'
+				options={{ title: 'Reset Password' }}
+			/>
+			<Stack.Screen
+				name='reset-password-success'
+				options={{ headerShown: false }}
+			/>
 		</Stack>
 	)
 }

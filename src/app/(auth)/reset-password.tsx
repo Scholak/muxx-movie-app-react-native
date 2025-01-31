@@ -6,7 +6,7 @@ import { useRouter } from 'expo-router'
 import Input from '@/src/components/Atoms/Input'
 import Button from '@/src/components/Atoms/Button'
 
-const SignIn = () => {
+const ForgotPassword = () => {
 	const router = useRouter()
 
 	return (
@@ -15,23 +15,18 @@ const SignIn = () => {
 				onChange={() => {}}
 				placeholder='Email'
 			/>
-			<Input
-				onChange={() => {}}
-				placeholder='Password'
-				secureTextEntry
+			<Button
+				variant='primary'
+				onPress={() => router.push('/reset-password-success')}
+				text='Reset Password'
 			/>
 			<Button
 				variant='secondary'
-				onPress={() => router.push('/reset-password')}
-				text='Forgot password?'
-			/>
-			<Button
-				variant='primary'
-				onPress={() => {}}
+				onPress={() => router.push('/signin')}
 				text='Sign In'
 			/>
 		</View>
 	)
 }
 
-export default SignIn
+export default ForgotPassword
