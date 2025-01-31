@@ -5,6 +5,10 @@
 		"strict": true,
 		"module": "CommonJS",
 		"target": "ES6",
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["src/*"]
+		}
 	}
 }
