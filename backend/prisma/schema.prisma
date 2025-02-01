@@ -13,10 +13,22 @@ enum Subscription {
 }
 
 model User {
-  id           Int          @id @default(autoincrement())
-  email        String       @unique
-  password     String
-  subscription Subscription
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
+  id             Int                 @id @default(autoincrement())
+  email          String              @unique
+  password       String
+  subscription   Subscription
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  resetPasswords ResetPasswordCode[]
+}
+
+model ResetPasswordCode {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  code      String   @unique
+  expiredAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
 }
