@@ -1,7 +1,12 @@
+// Package Imports
 import { Response, NextFunction } from 'express'
-import { verifyToken } from '../utils/verify-token'
-import { IUser } from '@/domains/auth/auth.types'
-import { ProtectedRequest } from '@/types/protected-request'
+
+// Utility Imports
+import { verifyToken } from '@utils/verify-token'
+
+// Type Imports
+import { IUser } from '@domains/auth/auth.types'
+import { ProtectedRequest } from '../types/protected-request'
 
 export const auth = async (req: ProtectedRequest, res: Response, next: NextFunction) => {
 	const authHeader = req.headers.authorization

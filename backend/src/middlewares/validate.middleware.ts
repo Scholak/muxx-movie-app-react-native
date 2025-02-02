@@ -1,5 +1,6 @@
-import { Request, Response, NextFunction } from 'express'
+// Package Imports
 import { z, ZodError, ZodIssue } from 'zod'
+import { Request, Response, NextFunction } from 'express'
 
 export function validate<T>(schema: z.ZodSchema<T>) {
 	return (req: Request, res: Response, next: NextFunction) => {

@@ -1,14 +1,22 @@
 {
 	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+			"@domains/*": ["./src/domains/*"],
+			"@jobs/*": ["./src/jobs/*"],
+			"@lib/*": ["./src/lib/*"],
+			"@middlewares/*": ["./src/middlewares/*"],
+			"@types/*": ["./src/types/*"],
+			"@utils/*": ["./src/utils/*"]
+		},
+		"module": "CommonJS",
+		"moduleResolution": "Node",
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"target": "ESNext",
 		"outDir": "./dist",
 		"rootDir": "./src",
 		"strict": true,
-		"module": "CommonJS",
-		"target": "ES6",
-		"esModuleInterop": true,
-		"baseUrl": "./",
-		"paths": {
-			"@/*": ["src/*"]
-		}
+		"esModuleInterop": true
 	}
 }

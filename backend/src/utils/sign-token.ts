@@ -1,3 +1,4 @@
+// Package Imports
 import { JWTPayload, SignJWT } from 'jose'
 
 const secretKey = new TextEncoder().encode(process.env.JWT_SECRET || 'secret')

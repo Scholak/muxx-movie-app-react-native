@@ -1,6 +1,17 @@
+// Package Imports
 import { z, ZodType } from 'zod'
-import { ISignUpSchema, ISignInSchema, SUBSCRIPTION, IForgotPasswordSchema, IResetPasswordSchema } from './auth.types'
-import { samePasswordValidation } from '../../utils/password-checker'
+
+// Utility Imports
+import { samePasswordValidation } from '@utils/password-checker'
+
+// Type Imports
+import {
+	ISignUpSchema,
+	ISignInSchema,
+	SUBSCRIPTION,
+	IForgotPasswordSchema,
+	IResetPasswordSchema,
+} from '@domains/auth/auth.types'
 
 export const signUpSchema: ZodType<ISignUpSchema> = z
 	.object({

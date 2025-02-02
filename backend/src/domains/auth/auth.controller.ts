@@ -1,13 +1,20 @@
-import { ProtectedRequest } from '@/types/protected-request'
-import { prisma } from '../../lib/prisma'
+// Package Imports
 import { Request, Response } from 'express'
-import { signToken } from '../../utils/sign-token'
-import bcrypt from 'bcrypt'
-import { generateCode } from '../../utils/code-generator'
-import { mailer } from '../../lib/mailer'
-import path from 'path'
 import fs from 'fs'
+import path from 'path'
 import dayjs from 'dayjs'
+import bcrypt from 'bcrypt'
+
+// Library Imports
+import { mailer } from '@lib/mailer'
+import { prisma } from '@lib/prisma'
+
+// Utility Imports
+import { signToken } from '@utils/sign-token'
+import { generateCode } from '@utils/code-generator'
+
+// Type Imports
+import { ProtectedRequest } from '../../types/protected-request'
 
 export const signUp = async (req: Request, res: Response) => {
 	try {
@@ -92,7 +99,6 @@ export const forgotPassword = async (req: Request, res: Response) => {
 			subject: 'Password Reset Request',
 			html: template,
 		}
-
 		await mailer.sendMail(mailOptions)
 
 		const codeData = {
@@ -107,6 +113,7 @@ export const forgotPassword = async (req: Request, res: Response) => {
 
 		res.status(200).json({ message: 'Reset password email has been sent!' })
 	} catch (error: any) {
+		console.log(error)
 		res.status(500).json({ error: 'Internal Server Error!' })
 	}
 }

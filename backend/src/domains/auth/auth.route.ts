@@ -1,9 +1,16 @@
+// Package Imports
 import { Router } from 'express'
-import { forgotPasswordSchema, resetPasswordSchema, signInSchema, signUpSchema } from './auth.validation'
-import { forgotPassword, getAuth, resetPassword, signIn, signUp } from './auth.controller'
+
+// Middleware Imports
+import { auth } from '@middlewares/auth.middleware'
+import { validate } from '@middlewares/validate.middleware'
+
+// Service Imports
+import { forgotPassword, getAuth, resetPassword, signIn, signUp } from '@domains/auth/auth.controller'
+import { forgotPasswordSchema, resetPasswordSchema, signInSchema, signUpSchema } from '@domains/auth/auth.validation'
+
+// Type Imports
 import { IForgotPasswordSchema, IResetPasswordSchema, ISignInSchema, ISignUpSchema } from './auth.types'
-import { validate } from '../../middlewares/validate.middleware'
-import { auth } from '../../middlewares/auth.middleware'
 
 export const authRoutes = Router()
 
