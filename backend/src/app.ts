@@ -1,7 +1,6 @@
 // Package Imports
 import path from 'path'
 import dotenv from 'dotenv'
-import cron from 'node-cron'
 import moduleAlias from 'module-alias'
 import express, { Request, Response } from 'express'
 import errorHandler from './middlewares/error.middleware'
@@ -17,14 +16,11 @@ moduleAlias.addAliases({
 	'@utils': path.resolve(__dirname, './utils'),
 })
 
-// Domain Imports
-import { authRoutes } from '@domains/auth/auth.route'
+// Config Imports
+import { registerCronJobs } from './config/register.cron-jobs'
+import { registerRoutes } from './config/register-routes'
 
-// Job Imports
-import { clearExpiredCodes } from '@jobs/clear-expired-codes.job'
-
-// Daily
-cron.schedule('0 0 * * *', clearExpiredCodes)
+registerCronJobs()
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -34,7 +30,7 @@ app.use(express.json())
 app.get('/ping', (req: Request, res: Response) => {
 	res.json({ message: 'pong' })
 })
-app.use('/api/auth', authRoutes)
+app.use('/api', registerRoutes)
 
 // app.use(errorHandler)
 
