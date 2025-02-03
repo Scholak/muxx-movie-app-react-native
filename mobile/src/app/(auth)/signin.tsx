@@ -1,24 +1,84 @@
 // Package Imports
-import { View } from 'react-native'
+import { AxiosError } from 'axios'
 import { useRouter } from 'expo-router'
+import { View, Keyboard } from 'react-native'
+import { useForm, Controller } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import Toast from 'react-native-toast-message'
 
 // Component Imports
 import Input from '@/src/components/Atoms/Input'
 import Button from '@/src/components/Atoms/Button'
 
+// Utility Imports
+import { signInSchema } from '@/src/validations/auth-validations'
+import useAuthStore from '@/src/store/auth-store'
+
+// Type Imports
+import { ISignInResponse, ISignInSchema } from '@/src/types/auth-types'
+
 const SignIn = () => {
 	const router = useRouter()
 
+	const { signIn } = useAuthStore()
+
+	const {
+		control,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<ISignInSchema>({
+		resolver: zodResolver(signInSchema),
+		defaultValues: {
+			email: '',
+			password: '',
+		},
+	})
+
+	const handleSignIn = async (data: ISignInSchema) => {
+		Keyboard.dismiss()
+		await signIn({
+			data,
+			onSuccess: (response: ISignInResponse) =>
+				Toast.show({
+					type: 'success',
+					text1: response.message,
+				}),
+			onError: (error: AxiosError<any>) =>
+				Toast.show({
+					type: 'error',
+					text1: error.response?.data.error,
+				}),
+		})
+	}
+
 	return (
 		<View className='flex-1 gap-9 px-5 py-10 bg-dark'>
-			<Input
-				onChange={() => {}}
-				placeholder='Email'
+			<Controller
+				control={control}
+				render={({ field: { onChange, onBlur, value } }) => (
+					<Input
+						placeholder='Email'
+						onBlur={onBlur}
+						onChange={onChange}
+						value={value}
+						error={errors?.email?.message}
+					/>
+				)}
+				name='email'
 			/>
-			<Input
-				onChange={() => {}}
-				placeholder='Password'
-				secureTextEntry
+			<Controller
+				control={control}
+				render={({ field: { onChange, onBlur, value } }) => (
+					<Input
+						placeholder='Password'
+						onBlur={onBlur}
+						onChange={onChange}
+						value={value}
+						error={errors?.password?.message}
+						secureTextEntry
+					/>
+				)}
+				name='password'
 			/>
 			<Button
 				variant='secondary'
@@ -27,7 +87,7 @@ const SignIn = () => {
 			/>
 			<Button
 				variant='primary'
-				onPress={() => {}}
+				onPress={handleSubmit(handleSignIn)}
 				text='Sign In'
 			/>
 		</View>

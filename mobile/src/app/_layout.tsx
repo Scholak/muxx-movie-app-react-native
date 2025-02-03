@@ -2,7 +2,11 @@
 import { useEffect } from 'react'
 import { useFonts } from 'expo-font'
 import { StatusBar } from 'expo-status-bar'
+import Toast from 'react-native-toast-message'
 import { Slot, SplashScreen } from 'expo-router'
+
+// Component Imports
+import Spinner from '@/src/components/Organisms/Spinner'
 
 // Asset Imports
 import '../global.css'
@@ -31,6 +35,8 @@ export default function RootLayout() {
 		<>
 			<StatusBar style='light' />
 			<Slot />
+			<Spinner />
+			<Toast />
 		</>
 	)
 }
