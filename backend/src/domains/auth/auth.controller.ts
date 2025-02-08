@@ -49,7 +49,7 @@ export const signIn = async (req: Request, res: Response) => {
 		const check = await bcrypt.compare(data.password, signedInUser.password)
 
 		if (!check) {
-			res.status(400).json({ error: "Passwords don't match!" })
+			res.status(400).json({ error: 'Incorrect password!' })
 			return
 		}
 
@@ -85,7 +85,7 @@ export const forgotPassword = async (req: Request, res: Response) => {
 			return
 		}
 
-		const code = generateCode(10)
+		const code = generateCode(8)
 
 		const templatePath = path.join(__dirname, '../../emails/reset-password.html')
 		let template = fs.readFileSync(templatePath, 'utf8')
@@ -104,7 +104,7 @@ export const forgotPassword = async (req: Request, res: Response) => {
 		const codeData = {
 			userId: user.id,
 			code,
-			expiredAt: dayjs().subtract(7, 'days').toDate(),
+			expiredAt: dayjs().add(7, 'days').toDate(),
 		}
 
 		await prisma.resetPasswordCode.create({

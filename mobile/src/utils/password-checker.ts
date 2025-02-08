@@ -1,5 +1,6 @@
 // Package Imports
 import { z, ZodIssue } from 'zod'
+import { customValidationMessage } from './custom-validation-message'
 
 type ISamePasswordValidationData = {
 	password: string
@@ -14,7 +15,7 @@ export const samePasswordValidation = (data: ISamePasswordValidationData, ctx: I
 	if (data.password !== data.passwordConfirmation) {
 		ctx.addIssue({
 			path: ['passwordConfirmation'],
-			message: 'Passwords do not match',
+			message: customValidationMessage('Passwords', 'same'),
 			code: z.ZodIssueCode.custom,
 		})
 	}
