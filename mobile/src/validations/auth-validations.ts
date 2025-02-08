@@ -18,7 +18,8 @@ export const signUpSchema: ZodType<ISignUpSchema> = z
 		email: z.string().min(1).email(),
 		password: z.string().min(8),
 		passwordConfirmation: z.string().min(8),
-		subscription: z.nativeEnum(SUBSCRIPTION),
+		termsAndConditions: z.boolean().refine(value => value, { message: 'required' }),
+		privacyPolicy: z.boolean().refine(value => value, { message: 'required' }),
 	})
 	.superRefine(samePasswordValidation)
 

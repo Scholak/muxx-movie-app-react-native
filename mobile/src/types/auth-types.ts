@@ -14,11 +14,19 @@ export type IUser = {
 	updatedAt: string
 }
 
+export type ISignUpData = {
+	email?: string
+	password?: string
+	passwordConfirmation?: string
+	subscription?: ISubscription
+}
+
 export type ISignUpSchema = {
 	email: string
 	password: string
 	passwordConfirmation: string
-	subscription: ISubscription
+	termsAndConditions?: boolean
+	privacyPolicy?: boolean
 }
 
 export type ISignUpResponse = {
@@ -43,7 +51,7 @@ export type IForgotPasswordSchema = {
 }
 
 export type IForgotPasswordResponse = {
-	email: string
+	message: string
 }
 
 export type IResetPasswordSchema = {

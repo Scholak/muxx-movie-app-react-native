@@ -9,14 +9,17 @@ import { endpoints } from '@/src/constants/endpoints'
 // Type Imports
 import {
 	IUser,
+	ISignUpData,
 	ISignInSchema,
-	ISignUpSchema,
 	IResetPasswordSchema,
 	IForgotPasswordSchema,
 	ISignInResponse,
+	ISubscription,
+	ISignUpResponse,
 } from '@/src/types/auth-types'
 
 type State = {
+	subscription: ISubscription
 	user: IUser | null
 	isRequesting: boolean
 }
@@ -27,12 +30,13 @@ type ICallbackFunctions = {
 }
 
 type IFetchUserParams = ICallbackFunctions & {}
-type ISignUpParams = ICallbackFunctions & { data: ISignUpSchema }
+type ISignUpParams = ICallbackFunctions & { data: ISignUpData }
 type ISignInParams = ICallbackFunctions & { data: ISignInSchema }
 type IForgotPasswordParams = ICallbackFunctions & { data: IForgotPasswordSchema }
 type IResetPasswordParams = ICallbackFunctions & { data: IResetPasswordSchema }
 
 type Action = {
+	setSubscription: (subscription: ISubscription) => void
 	fetchUser: ({ onSuccess, onError }: IFetchUserParams) => Promise<void>
 	signUp: ({ data, onSuccess, onError }: ISignUpParams) => Promise<void>
 	signIn: ({ data, onSuccess, onError }: ISignInParams) => Promise<void>
@@ -41,8 +45,13 @@ type Action = {
 }
 
 const useAuthStore = create<State & Action>(set => ({
+	subscription: 'MONTHLY',
 	user: null,
 	isRequesting: false,
+
+	setSubscription: (subscription: ISubscription) => {
+		set({ subscription })
+	},
 
 	fetchUser: async ({ onSuccess = () => {}, onError = () => {} }) => {
 		set({ isRequesting: true })
@@ -61,7 +70,8 @@ const useAuthStore = create<State & Action>(set => ({
 	signUp: async ({ data, onSuccess = () => {}, onError = () => {} }) => {
 		set({ isRequesting: true })
 		try {
-			const response = await api.post(endpoints.auth.signUp, data)
+			const response = await api.post<ISignUpResponse>(endpoints.auth.signUp, data)
+			await AsyncStorage.setItem('jwt', response.data.token)
 			set({ user: response.data.signedUpUser })
 			onSuccess(response.data)
 		} catch (error) {
@@ -77,8 +87,8 @@ const useAuthStore = create<State & Action>(set => ({
 		try {
 			const response = await api.post<ISignInResponse>(endpoints.auth.signIn, data)
 			await AsyncStorage.setItem('jwt', response.data.token)
-			onSuccess(response.data)
 			set({ user: response.data.signedInUser })
+			onSuccess(response.data)
 		} catch (error: any) {
 			console.error('Sign In Error:', error.message)
 			onError(error)

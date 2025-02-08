@@ -1,4 +1,5 @@
 // Package Imports
+import { useRouter } from 'expo-router'
 import { Image, View } from 'react-native'
 
 // Component Imports
@@ -9,6 +10,8 @@ import Typography from '@/src/components/Atoms/Typography'
 const check = require('@/src/assets/images/signup-success.png')
 
 const SignupSuccess = () => {
+	const router = useRouter()
+
 	return (
 		<View className='flex-1 justify-between px-5 py-10 bg-dark'>
 			{/* Invisible View For Aligning Other Elements */}
@@ -26,7 +29,7 @@ const SignupSuccess = () => {
 			</View>
 			<Button
 				variant='primary'
-				onPress={() => {}}
+				onPress={() => router.push('/home')}
 				text='Start Watching'
 			/>
 		</View>

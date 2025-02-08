@@ -11,36 +11,40 @@ import Button from '@/src/components/Atoms/Button'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 // Utility Imports
-import { resetPasswordSchema } from '@/src/validations/auth-validations'
+import { forgotPasswordSchema } from '@/src/validations/auth-validations'
 import useAuthStore from '@/src/store/auth-store'
 
 // Type Imports
-import { IResetPasswordSchema } from '@/src/types/auth-types'
+import { IForgotPasswordResponse, IForgotPasswordSchema } from '@/src/types/auth-types'
 
-const ResetPassword = () => {
+const ForgotPassword = () => {
 	const router = useRouter()
 
-	const { resetPassword } = useAuthStore()
+	const { forgotPassword } = useAuthStore()
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<IResetPasswordSchema>({
-		resolver: zodResolver(resetPasswordSchema),
+	} = useForm({
+		resolver: zodResolver(forgotPasswordSchema),
 		defaultValues: {
-			code: '',
-			password: '',
-			passwordConfirmation: '',
+			email: '',
 		},
 	})
 
-	const handleResetPassword = (data: IResetPasswordSchema) => {
+	const handleForgotPassword = (data: IForgotPasswordSchema) => {
 		Keyboard.dismiss()
 
-		resetPassword({
+		forgotPassword({
 			data,
-			onSuccess: () => router.replace('/reset-password-success'),
+			onSuccess: (response: IForgotPasswordResponse) => {
+				Toast.show({
+					type: 'success',
+					text1: response.message,
+				})
+				router.push('/reset-password')
+			},
 			onError: (error: AxiosError<any>) =>
 				Toast.show({
 					type: 'error',
@@ -59,43 +63,15 @@ const ResetPassword = () => {
 							onChange={onChange}
 							onBlur={onBlur}
 							value={value}
-							placeholder='Code'
-							error={errors?.code?.message}
+							placeholder='Email'
+							error={errors?.email?.message}
 						/>
 					)}
-					name='code'
-				/>
-				<Controller
-					control={control}
-					render={({ field: { onChange, onBlur, value } }) => (
-						<Input
-							onChange={onChange}
-							onBlur={onBlur}
-							value={value}
-							placeholder='New Password'
-							error={errors?.password?.message}
-							secureTextEntry
-						/>
-					)}
-					name='password'
-				/>
-				<Controller
-					control={control}
-					render={({ field: { onChange, onBlur, value } }) => (
-						<Input
-							onChange={onChange}
-							onBlur={onBlur}
-							value={value}
-							placeholder='New Password Again'
-							error={errors?.passwordConfirmation?.message}
-							secureTextEntry
-						/>
-					)}
-					name='passwordConfirmation'
+					name='email'
 				/>
 				<Button
 					variant='primary'
-					onPress={handleSubmit(handleResetPassword)}
+					onPress={handleSubmit(handleForgotPassword)}
 					text='Reset Password'
 				/>
 				<Button
@@ -108,4 +84,4 @@ const ResetPassword = () => {
 	)
 }
 
-export default ResetPassword
+export default ForgotPassword

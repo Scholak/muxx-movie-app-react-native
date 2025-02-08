@@ -113,7 +113,6 @@ export const forgotPassword = async (req: Request, res: Response) => {
 
 		res.status(200).json({ message: 'Reset password email has been sent!' })
 	} catch (error: any) {
-		console.log(error)
 		res.status(500).json({ error: 'Internal Server Error!' })
 	}
 }
@@ -142,13 +141,13 @@ export const resetPassword = async (req: Request, res: Response) => {
 			password: await bcrypt.hash(data.password, 10),
 		}
 
-		const deleteCodePromise = await prisma.resetPasswordCode.delete({ where: { id: code.id } })
+		const deleteCodePromise = prisma.resetPasswordCode.delete({ where: { id: code.id } })
 		const updateUserPromise = prisma.user.update({
 			where: { id: user.id },
 			data: userData,
 		})
 
-		await Promise.all([updateUserPromise])
+		await Promise.all([updateUserPromise, deleteCodePromise])
 
 		res.status(201).json({ message: 'Password has been reset successfully!', user })
 	} catch (error: any) {

@@ -24,7 +24,7 @@ const ResetPasswordSuccess = () => {
 					weight='bold'
 					alignment='center'
 				>
-					Reset password link has been sent to your email.
+					Your password has been reseted successfully.
 				</Typography>
 			</View>
 			<Button

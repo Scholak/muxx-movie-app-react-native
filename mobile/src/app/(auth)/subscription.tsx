@@ -8,8 +8,21 @@ import Card from '@/src/components/Atoms/Card'
 import Button from '@/src/components/Atoms/Button'
 import Typography from '@/src/components/Atoms/Typography'
 
+// Utility Imports
+import useAuthStore from '@/src/store/auth-store'
+
+// Type Imports
+import { ISubscription } from '@/src/types/auth-types'
+
 const Subscription = () => {
 	const router = useRouter()
+
+	const { setSubscription } = useAuthStore()
+
+	const handleSelectSubscription = (subscription: ISubscription) => {
+		setSubscription(subscription)
+		router.push('/signup')
+	}
 
 	return (
 		<View className='flex-1 gap-6 px-5 py-10 bg-dark'>
@@ -68,7 +81,7 @@ const Subscription = () => {
 				</View>
 				<Button
 					variant='primary'
-					onPress={() => router.push('/signup')}
+					onPress={() => handleSelectSubscription('MONTHLY')}
 					text='Monthly'
 				/>
 			</Card>
@@ -101,7 +114,7 @@ const Subscription = () => {
 				</View>
 				<Button
 					variant='primary'
-					onPress={() => router.push('/signup')}
+					onPress={() => handleSelectSubscription('YEARLY')}
 					text='Yearly'
 				/>
 			</Card>
