@@ -24,6 +24,7 @@ const CategoriesMenu = () => {
 		<View className='flex-row gap-2'>
 			{categories.map(category => (
 				<Button
+					key={category.text}
 					variant={category.isActive ? 'primary' : 'secondary'}
 					onPress={() => router.push(category.path)}
 					text={category.text}
