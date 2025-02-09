@@ -8,7 +8,7 @@ const logo = require('@/src/assets/images/logo.png')
 
 const Header = () => {
 	return (
-		<View className='flex-row items-center justify-between py-8'>
+		<View className='flex-row items-center justify-between py-6'>
 			<Link
 				href='/home'
 				asChild
