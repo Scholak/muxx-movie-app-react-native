@@ -9,10 +9,10 @@ import Button from '@/src/components/Atoms/Button'
 import Typography from '@/src/components/Atoms/Typography'
 
 // Type Imports
-import { ISliderMovie } from '@/src/types/movie-types'
+import { IMainSliderMovie } from '@/src/types/movie-types'
 
 type IMainSlideProps = {
-	movie: ISliderMovie
+	movie: IMainSliderMovie
 }
 
 const MainSlide = ({ movie }: IMainSlideProps) => {

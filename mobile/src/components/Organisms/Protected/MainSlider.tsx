@@ -7,18 +7,11 @@ import StepIndicator from '@/src/components/Atoms/StepIndicator'
 import FullWidthSlider from '@/src/components/Atoms/FullWidthSlider'
 import MainSlide from '@/src/components/Molecules/Protected/MainSlide'
 
+// Data Imports
+import { mainSliderMovies } from '@/src/data/movie'
+
 // Type Imports
-import { ISliderMovie } from '@/src/types/movie-types'
-
-const bg = require('@/src/assets/images/bg-image.png')
-
-const movies: ISliderMovie[] = [
-	{ id: '1', poster: bg, text: 'Carnage With Silver Hair', genres: ['Comedy', 'Crime', 'Drama'] },
-	{ id: '2', poster: bg, text: 'Carnage With Silver Hair', genres: ['Comedy', 'Crime', 'Drama'] },
-	{ id: '3', poster: bg, text: 'Carnage With Silver Hair', genres: ['Comedy', 'Crime', 'Drama'] },
-	{ id: '4', poster: bg, text: 'Carnage With Silver Hair', genres: ['Comedy', 'Crime', 'Drama'] },
-	{ id: '5', poster: bg, text: 'Carnage With Silver Hair', genres: ['Comedy', 'Crime', 'Drama'] },
-]
+import { IMainSliderMovie } from '@/src/types/movie-types'
 
 const MainSlider = () => {
 	const { height } = useWindowDimensions()
@@ -30,12 +23,12 @@ const MainSlider = () => {
 			style={{ height: (Math.floor(height) * 2) / 3 }}
 			className='mt-4 items-center'
 		>
-			<FullWidthSlider<ISliderMovie>
-				data={movies}
+			<FullWidthSlider<IMainSliderMovie>
+				data={mainSliderMovies}
 				keyExtractor={item => item.id}
 				renderStep={({ item }) => (
 					<MainSlide
-						key={item.key}
+						key={item.id}
 						movie={item}
 					/>
 				)}

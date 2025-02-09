@@ -5,7 +5,7 @@ import { NativeSyntheticEvent, NativeScrollEvent, FlatList, ListRenderItem } fro
 type IFullWidthSliderProps<T> = {
 	data: T[]
 	setStep: (step: 1 | 2 | 3 | 4) => void
-	renderStep: ListRenderItem<any>
+	renderStep: ListRenderItem<T>
 	keyExtractor: ((item: T, index: number) => string) | undefined
 	className?: string
 	[key: string]: any
