@@ -33,7 +33,7 @@ export const forgotPasswordSchema: ZodType<IForgotPasswordSchema> = z.object({
 
 export const resetPasswordSchema: ZodType<IResetPasswordSchema> = z
 	.object({
-		code: z.string(),
+		code: z.string().min(1),
 		password: z.string().min(8),
 		passwordConfirmation: z.string().min(8),
 	})
