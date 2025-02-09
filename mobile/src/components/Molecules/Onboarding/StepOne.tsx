@@ -5,7 +5,7 @@ import { View, useWindowDimensions, ImageBackground, Image } from 'react-native'
 import Typography from '@/src/components/Atoms/Typography'
 
 // Asset Imports
-const logo = require('@/src/assets/images/logo-big.png')
+const logo = require('@/src/assets/images/logo.png')
 const bg = require('@/src/assets/images/bg-image.png')
 
 const StepOne = () => {
