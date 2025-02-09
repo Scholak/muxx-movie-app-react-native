@@ -3,12 +3,16 @@ import { useEffect } from 'react'
 import { View } from 'react-native'
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
 
+// Utility Imports
+import { cn } from '@/src/utils/cn'
+
 const Step = () => {
 	return <View className='w-1 h-1 bg-[#787880] rounded-full'></View>
 }
 
 type IIndicatorProps = {
-	activeStep: 1 | 2 | 3 | 4
+	totalSteps: number
+	activeStep: number
 }
 
 const Indicator = ({ activeStep }: IIndicatorProps) => {
@@ -36,28 +40,29 @@ const Indicator = ({ activeStep }: IIndicatorProps) => {
 
 	return (
 		<Animated.View
-			className={`absolute top-0 left-0 w-12 h-1 bg-primary rounded`}
+			className={`absolute top-0 left-0 w-11 h-1 bg-primary rounded`}
 			style={animatedStyle}
 		></Animated.View>
 	)
 }
 
 type IStepIndicatorProps = {
-	activeStep: 1 | 2 | 3 | 4
+	totalSteps: number
+	activeStep: number
+	className?: string
 }
 
-const StepIndicator = ({ activeStep }: IStepIndicatorProps) => {
+const StepIndicator = ({ totalSteps, activeStep, className }: IStepIndicatorProps) => {
 	return (
-		<View className='items-center'>
+		<View className={cn('items-center', className)}>
 			<View className='relative flex-row justify-center gap-2'>
-				<Step />
-				<Step />
-				<Step />
-				<View className='w-2' />
-				<Step />
-				<Step />
-				<Step />
-				<Indicator activeStep={activeStep} />
+				{Array.from({ length: totalSteps + 3 }).map((value, index) => (
+					<Step key={index} />
+				))}
+				<Indicator
+					totalSteps={totalSteps}
+					activeStep={activeStep}
+				/>
 			</View>
 		</View>
 	)

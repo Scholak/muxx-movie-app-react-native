@@ -1,10 +1,10 @@
 // Package Imports
 import { ScrollView } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 // Component Imports
 import Header from '@/src/components/Organisms/Protected/Header'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import Typography from '@/src/components/Atoms/Typography'
+import MainSlider from '@/src/components/Organisms/Protected/MainSlider'
 import CategoriesMenu from '@/src/components/Organisms/Protected/CategoriesMenu'
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<Header />
 				<CategoriesMenu />
-				<Typography>Home</Typography>
+				<MainSlider />
 			</ScrollView>
 		</SafeAreaView>
 	)
