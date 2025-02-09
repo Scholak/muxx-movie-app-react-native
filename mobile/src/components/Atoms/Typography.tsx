@@ -8,7 +8,7 @@ import { cn } from '@/src/utils/cn'
 type ITypographyProps = {
 	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl'
 	weight?: 'regular' | 'bold' | 'medium'
-	color?: 'white' | 'off-white' | 'gray'
+	color?: 'white' | 'off-white' | 'gray' | 'green'
 	alignment?: 'left' | 'center' | 'right' | 'justify'
 	capitalize?: boolean
 	style?: StyleProp<TextStyle>
@@ -41,6 +41,7 @@ const colors = {
 	white: 'text-white',
 	'off-white': 'text-off-white',
 	gray: 'text-gray',
+	green: 'text-[#ADEA00]',
 }
 
 // Alignment Styles

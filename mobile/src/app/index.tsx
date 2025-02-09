@@ -10,5 +10,5 @@ export default function Index() {
 		if (rootNavigationState?.key) router.push('/onboarding')
 	}, [router, rootNavigationState?.key])
 
-	return <Redirect href='/signin' />
+	return <Redirect href='/home' />
 }
