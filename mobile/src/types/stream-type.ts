@@ -23,3 +23,9 @@ export type INowOnMuxxStream = {
 	description: string
 	type: 'movie' | 'serie'
 }
+
+export type IRandomGenreStream = {
+	id: string
+	poster: ImageSourcePropType
+	type: 'movie' | 'serie'
+}

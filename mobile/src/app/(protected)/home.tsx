@@ -3,6 +3,7 @@ import { ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 // Component Imports
+import GenreSlide from '@/src/components/Molecules/Protected/GenreSlide'
 import StreamSlide from '@/src/components/Molecules/Protected/StreamSlide'
 import ForYouSlide from '@/src/components/Molecules/Protected/ForYouSlide'
 import ContinueWatchingSlide from '@/src/components/Molecules/Protected/ContinueWatchingSlide'
@@ -14,11 +15,14 @@ import CategoriesMenu from '@/src/components/Organisms/Protected/CategoriesMenu'
 
 // Data Imports
 import { movies } from '@/src/data/movie'
-import { continueWatching, forYou, nowOnMuxx } from '@/src/data/stream'
+import { continueWatching, forYou, nowOnMuxx, randomGenreStreams } from '@/src/data/stream'
+
+// Utility Imports
+import { generateRandomGenres } from '@/src/utils/generate-random-genres'
 
 // Type Imports
 import { ISliderMovie } from '@/src/types/movie-types'
-import { IContinueWatchingStream, IStreamType } from '@/src/types/stream-type'
+import { IContinueWatchingStream, IRandomGenreStream, IStreamType } from '@/src/types/stream-type'
 
 const Home = () => {
 	const handleRemoveFromWatching = (id: string, type: IStreamType) => {
@@ -31,7 +35,7 @@ const Home = () => {
 				<Header />
 				<CategoriesMenu />
 				<MainSlider />
-				<View className='mt-8 gap-8'>
+				<View className='my-8 gap-8'>
 					{/* Trending Movies */}
 					<StreamSlider<ISliderMovie>
 						title='Trending'
@@ -66,6 +70,13 @@ const Home = () => {
 						)}
 					/>
 					<NowOnMuxx stream={nowOnMuxx} />
+					{generateRandomGenres(6).map((genre, index) => (
+						<StreamSlider<IRandomGenreStream>
+							title={index % 2 === 0 ? `${genre} Movies` : `${genre} Series`}
+							streams={randomGenreStreams}
+							renderItem={({ item }) => <GenreSlide stream={item} />}
+						/>
+					))}
 				</View>
 			</ScrollView>
 		</SafeAreaView>

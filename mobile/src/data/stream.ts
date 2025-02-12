@@ -1,4 +1,4 @@
-import { IContinueWatchingStream, IForYouSlideStream, INowOnMuxxStream } from '../types/stream-type'
+import { IContinueWatchingStream, IForYouSlideStream, INowOnMuxxStream, IRandomGenreStream } from '../types/stream-type'
 const bg = require('@/src/assets/images/bg-image.png')
 
 export const continueWatching: IContinueWatchingStream[] = [
@@ -29,3 +29,16 @@ export const nowOnMuxx: INowOnMuxxStream = {
 	description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur!',
 	type: 'movie',
 }
+
+export const randomGenreStreams: IRandomGenreStream[] = [
+	{ id: '1', poster: bg, type: 'movie' },
+	{ id: '2', poster: bg, type: 'movie' },
+	{ id: '3', poster: bg, type: 'movie' },
+	{ id: '4', poster: bg, type: 'movie' },
+	{ id: '5', poster: bg, type: 'movie' },
+	{ id: '6', poster: bg, type: 'movie' },
+	{ id: '7', poster: bg, type: 'movie' },
+	{ id: '8', poster: bg, type: 'movie' },
+	{ id: '9', poster: bg, type: 'movie' },
+	{ id: '10', poster: bg, type: 'movie' },
+]
