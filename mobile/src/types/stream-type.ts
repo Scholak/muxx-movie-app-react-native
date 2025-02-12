@@ -8,3 +8,10 @@ export type IContinueWatchingStream = {
 	title: string
 	type: 'movie' | 'serie'
 }
+
+export type IForYouSlideStream = {
+	id: string
+	poster: ImageSourcePropType
+	title: string
+	type: 'movie' | 'serie'
+}

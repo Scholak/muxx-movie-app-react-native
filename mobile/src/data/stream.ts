@@ -1,4 +1,4 @@
-import { IContinueWatchingStream } from '../types/stream-type'
+import { IContinueWatchingStream, IForYouSlideStream } from '../types/stream-type'
 const bg = require('@/src/assets/images/bg-image.png')
 
 export const continueWatching: IContinueWatchingStream[] = [
@@ -12,4 +12,12 @@ export const continueWatching: IContinueWatchingStream[] = [
 	{ id: '8', poster: bg, title: 'example movie title', type: 'movie' },
 	{ id: '9', poster: bg, title: 'example movie title', type: 'movie' },
 	{ id: '10', poster: bg, title: 'example movie title', type: 'movie' },
+]
+
+export const forYou: IForYouSlideStream[] = [
+	{ id: '1', poster: bg, title: 'example movie title', type: 'movie' },
+	{ id: '2', poster: bg, title: 'example movie title', type: 'movie' },
+	{ id: '3', poster: bg, title: 'example movie title', type: 'movie' },
+	{ id: '4', poster: bg, title: 'example movie title', type: 'movie' },
+	{ id: '5', poster: bg, title: 'example movie title', type: 'movie' },
 ]
