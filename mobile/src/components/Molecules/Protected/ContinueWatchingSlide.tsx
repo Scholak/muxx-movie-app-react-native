@@ -12,7 +12,6 @@ import { IContinueWatchingStream, IStreamType } from '@/src/types/stream-type'
 
 type IContinueWatchingSlideProps = {
 	stream: IContinueWatchingStream
-	type: 'movie' | 'serie'
 	onRemove: (id: string, type: IStreamType) => void
 }
 

@@ -12,7 +12,6 @@ import { IForYouSlideStream, IStreamType } from '@/src/types/stream-type'
 
 type IForYouSlideProps = {
 	stream: IForYouSlideStream
-	type: 'movie' | 'serie'
 	onRemove: (id: string, type: IStreamType) => void
 }
 

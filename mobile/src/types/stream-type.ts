@@ -15,3 +15,11 @@ export type IForYouSlideStream = {
 	title: string
 	type: 'movie' | 'serie'
 }
+
+export type INowOnMuxxStream = {
+	id: string
+	poster: ImageSourcePropType
+	title: string
+	description: string
+	type: 'movie' | 'serie'
+}

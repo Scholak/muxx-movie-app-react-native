@@ -21,7 +21,7 @@ const CategoriesMenu = () => {
 	const router = useRouter()
 
 	return (
-		<View className='flex-row gap-2'>
+		<View className='px-4 flex-row gap-2'>
 			{categories.map(category => (
 				<Button
 					key={category.text}

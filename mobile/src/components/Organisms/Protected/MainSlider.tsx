@@ -21,7 +21,7 @@ const MainSlider = () => {
 	return (
 		<View
 			style={{ height: (Math.floor(height) * 2) / 3 }}
-			className='mt-4 items-center'
+			className='px-4 mt-4 items-center'
 		>
 			<FullWidthSlider<IMainSliderMovie>
 				data={mainSliderMovies}

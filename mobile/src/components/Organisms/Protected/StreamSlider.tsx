@@ -12,7 +12,7 @@ type IStreamSliderProps<T> = {
 
 const StreamSlider = <T,>({ title, streams, renderItem }: IStreamSliderProps<T>) => {
 	return (
-		<View className='gap-3'>
+		<View className='pl-4 gap-3'>
 			<Typography
 				weight='bold'
 				size='2xl'

@@ -3,17 +3,18 @@ import { ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 // Component Imports
-import ContinueWatchingSlide from '@/src/components/Molecules/Protected/ContinueWatchingSlide'
 import StreamSlide from '@/src/components/Molecules/Protected/StreamSlide'
 import ForYouSlide from '@/src/components/Molecules/Protected/ForYouSlide'
+import ContinueWatchingSlide from '@/src/components/Molecules/Protected/ContinueWatchingSlide'
 import Header from '@/src/components/Organisms/Protected/Header'
+import NowOnMuxx from '@/src/components/Organisms/Protected/NowOnMuxx'
 import MainSlider from '@/src/components/Organisms/Protected/MainSlider'
-import CategoriesMenu from '@/src/components/Organisms/Protected/CategoriesMenu'
 import StreamSlider from '@/src/components/Organisms/Protected/StreamSlider'
+import CategoriesMenu from '@/src/components/Organisms/Protected/CategoriesMenu'
 
 // Data Imports
 import { movies } from '@/src/data/movie'
-import { continueWatching, forYou } from '@/src/data/stream'
+import { continueWatching, forYou, nowOnMuxx } from '@/src/data/stream'
 
 // Type Imports
 import { ISliderMovie } from '@/src/types/movie-types'
@@ -25,7 +26,7 @@ const Home = () => {
 	}
 
 	return (
-		<SafeAreaView className='px-4 flex-1 bg-dark'>
+		<SafeAreaView className=' flex-1 bg-dark'>
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<Header />
 				<CategoriesMenu />
@@ -49,7 +50,6 @@ const Home = () => {
 						renderItem={({ item }) => (
 							<ContinueWatchingSlide
 								stream={item}
-								type='movie'
 								onRemove={handleRemoveFromWatching}
 							/>
 						)}
@@ -61,11 +61,11 @@ const Home = () => {
 						renderItem={({ item }) => (
 							<ForYouSlide
 								stream={item}
-								type='movie'
 								onRemove={handleRemoveFromWatching}
 							/>
 						)}
 					/>
+					<NowOnMuxx stream={nowOnMuxx} />
 				</View>
 			</ScrollView>
 		</SafeAreaView>
