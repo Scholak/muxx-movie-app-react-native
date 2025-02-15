@@ -7,13 +7,14 @@ import StepIndicator from '@/src/components/Atoms/StepIndicator'
 import FullWidthSlider from '@/src/components/Atoms/FullWidthSlider'
 import MainSlide from '@/src/components/Molecules/Protected/MainSlide'
 
-// Data Imports
-import { mainSliderMovies } from '@/src/data/movie'
-
 // Type Imports
-import { IMainSliderMovie } from '@/src/types/movie-types'
+import { IMainSliderStream } from '@/src/types/stream-types'
 
-const MainSlider = () => {
+type IMainSliderProps = {
+	streams: IMainSliderStream[]
+}
+
+const MainSlider = ({ streams }: IMainSliderProps) => {
 	const { height } = useWindowDimensions()
 
 	const [step, setStep] = useState<any>(1)
@@ -23,13 +24,13 @@ const MainSlider = () => {
 			style={{ height: (Math.floor(height) * 2) / 3 }}
 			className='px-4 mt-4 items-center'
 		>
-			<FullWidthSlider<IMainSliderMovie>
-				data={mainSliderMovies}
+			<FullWidthSlider<IMainSliderStream>
+				data={streams}
 				keyExtractor={item => item.id}
 				renderStep={({ item }) => (
 					<MainSlide
 						key={item.id}
-						movie={item}
+						stream={item}
 					/>
 				)}
 				setStep={setStep}

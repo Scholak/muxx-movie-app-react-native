@@ -1,6 +1,6 @@
 import { ImageSourcePropType } from 'react-native'
 
-export type ISliderMovie = {
+export type ISliderSerie = {
 	id: string
 	poster: ImageSourcePropType
 }

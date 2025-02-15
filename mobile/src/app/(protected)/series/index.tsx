@@ -14,19 +14,24 @@ import StreamSlider from '@/src/components/Organisms/Protected/StreamSlider'
 import CategoriesMenu from '@/src/components/Organisms/Protected/CategoriesMenu'
 
 // Data Imports
-import { movies } from '@/src/data/movie'
-import { mainSliderMovies } from '@/src/data/movie'
-import { continueWatching, forYou, nowOnMuxx, randomGenreStreams } from '@/src/data/stream'
+import {
+	series,
+	forYouSeries,
+	nowOnMuxxSerie,
+	mainSliderSeries,
+	randomGenreSeries,
+	continueWatchingSeries,
+} from '@/src/data/serie'
 
 // Utility Imports
 import { generateRandomGenres } from '@/src/utils/generate-random-genres'
 
 // Type Imports
-import { ISliderMovie } from '@/src/types/movie-types'
-import { IContinueWatchingStream, IRandomGenreStream, IStreamType } from '@/src/types/stream-types'
+import { ISliderSerie } from '@/src/types/serie-types'
+import { IContinueWatchingStream, IRandomGenreStream } from '@/src/types/stream-types'
 
-const Home = () => {
-	const handleRemoveFromWatching = (id: string, type: IStreamType) => {
+const Series = () => {
+	const handleRemoveFromWatching = (id: string) => {
 		// api call...
 	}
 
@@ -35,23 +40,23 @@ const Home = () => {
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<Header />
 				<CategoriesMenu />
-				<MainSlider streams={mainSliderMovies} />
+				<MainSlider streams={mainSliderSeries} />
 				<View className='my-8 gap-8'>
-					{/* Trending Movies */}
-					<StreamSlider<ISliderMovie>
+					{/* Trending Series */}
+					<StreamSlider<ISliderSerie>
 						title='Trending'
-						streams={movies}
+						streams={series}
 						renderItem={({ item }) => (
 							<StreamSlide
 								stream={item}
-								type='movie'
+								type='serie'
 							/>
 						)}
 					/>
 					{/* Continue Watching */}
 					<StreamSlider<IContinueWatchingStream>
 						title='Continue watching'
-						streams={continueWatching}
+						streams={continueWatchingSeries}
 						renderItem={({ item }) => (
 							<ContinueWatchingSlide
 								stream={item}
@@ -62,7 +67,7 @@ const Home = () => {
 					{/* For You */}
 					<StreamSlider<IContinueWatchingStream>
 						title='For You'
-						streams={forYou}
+						streams={forYouSeries}
 						renderItem={({ item }) => (
 							<ForYouSlide
 								stream={item}
@@ -70,11 +75,11 @@ const Home = () => {
 							/>
 						)}
 					/>
-					<NowOnMuxx stream={nowOnMuxx} />
-					{generateRandomGenres(6).map((genre, index) => (
+					<NowOnMuxx stream={nowOnMuxxSerie} />
+					{generateRandomGenres(6).map(genre => (
 						<StreamSlider<IRandomGenreStream>
-							title={index % 2 === 0 ? `${genre} Movies` : `${genre} Series`}
-							streams={randomGenreStreams}
+							title={`${genre} Series`}
+							streams={randomGenreSeries}
 							renderItem={({ item }) => <GenreSlide stream={item} />}
 						/>
 					))}
@@ -84,4 +89,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default Series

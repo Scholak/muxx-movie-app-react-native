@@ -8,7 +8,7 @@ import Button from '@/src/components/Atoms/Button'
 import Typography from '@/src/components/Atoms/Typography'
 
 // Type Imports
-import { INowOnMuxxStream } from '@/src/types/stream-type'
+import { INowOnMuxxStream } from '@/src/types/stream-types'
 
 type INowOnMuxxProps = {
 	stream: INowOnMuxxStream

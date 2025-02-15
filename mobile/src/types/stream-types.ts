@@ -2,6 +2,14 @@ import { ImageSourcePropType } from 'react-native'
 
 export type IStreamType = 'movie' | 'serie'
 
+export type IMainSliderStream = {
+	id: string
+	poster: ImageSourcePropType
+	text: string
+	type: IStreamType
+	genres: string[]
+}
+
 export type IContinueWatchingStream = {
 	id: string
 	poster: ImageSourcePropType

@@ -14,19 +14,24 @@ import StreamSlider from '@/src/components/Organisms/Protected/StreamSlider'
 import CategoriesMenu from '@/src/components/Organisms/Protected/CategoriesMenu'
 
 // Data Imports
-import { movies } from '@/src/data/movie'
-import { mainSliderMovies } from '@/src/data/movie'
-import { continueWatching, forYou, nowOnMuxx, randomGenreStreams } from '@/src/data/stream'
+import {
+	movies,
+	forYouMovies,
+	nowOnMuxxMovie,
+	mainSliderMovies,
+	randomGenreMovies,
+	continueWatchingMovies,
+} from '@/src/data/movie'
 
 // Utility Imports
 import { generateRandomGenres } from '@/src/utils/generate-random-genres'
 
 // Type Imports
 import { ISliderMovie } from '@/src/types/movie-types'
-import { IContinueWatchingStream, IRandomGenreStream, IStreamType } from '@/src/types/stream-types'
+import { IContinueWatchingStream, IRandomGenreStream } from '@/src/types/stream-types'
 
-const Home = () => {
-	const handleRemoveFromWatching = (id: string, type: IStreamType) => {
+const Movies = () => {
+	const handleRemoveFromWatching = (id: string) => {
 		// api call...
 	}
 
@@ -51,7 +56,7 @@ const Home = () => {
 					{/* Continue Watching */}
 					<StreamSlider<IContinueWatchingStream>
 						title='Continue watching'
-						streams={continueWatching}
+						streams={continueWatchingMovies}
 						renderItem={({ item }) => (
 							<ContinueWatchingSlide
 								stream={item}
@@ -62,7 +67,7 @@ const Home = () => {
 					{/* For You */}
 					<StreamSlider<IContinueWatchingStream>
 						title='For You'
-						streams={forYou}
+						streams={forYouMovies}
 						renderItem={({ item }) => (
 							<ForYouSlide
 								stream={item}
@@ -70,11 +75,11 @@ const Home = () => {
 							/>
 						)}
 					/>
-					<NowOnMuxx stream={nowOnMuxx} />
-					{generateRandomGenres(6).map((genre, index) => (
+					<NowOnMuxx stream={nowOnMuxxMovie} />
+					{generateRandomGenres(6).map(genre => (
 						<StreamSlider<IRandomGenreStream>
-							title={index % 2 === 0 ? `${genre} Movies` : `${genre} Series`}
-							streams={randomGenreStreams}
+							title={`${genre} Movies`}
+							streams={randomGenreMovies}
 							renderItem={({ item }) => <GenreSlide stream={item} />}
 						/>
 					))}
@@ -84,4 +89,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default Movies

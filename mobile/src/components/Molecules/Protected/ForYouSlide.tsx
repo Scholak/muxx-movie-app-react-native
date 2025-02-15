@@ -8,7 +8,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 import Typography from '@/src/components/Atoms/Typography'
 
 // Type Imports
-import { IForYouSlideStream, IStreamType } from '@/src/types/stream-type'
+import { IForYouSlideStream, IStreamType } from '@/src/types/stream-types'
 
 type IForYouSlideProps = {
 	stream: IForYouSlideStream

@@ -3,7 +3,7 @@ import { Href, Link } from 'expo-router'
 import { Pressable, useWindowDimensions, Image } from 'react-native'
 
 // Type Imports
-import { IRandomGenreStream } from '@/src/types/stream-type'
+import { IRandomGenreStream } from '@/src/types/stream-types'
 
 type IGenreSlideProps = {
 	stream: IRandomGenreStream

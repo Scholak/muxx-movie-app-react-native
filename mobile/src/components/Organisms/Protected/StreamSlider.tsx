@@ -19,7 +19,7 @@ const StreamSlider = <T,>({ title, streams, renderItem }: IStreamSliderProps<T>)
 			>
 				{title}
 			</Typography>
-			<FlatList
+			<FlatList<T>
 				data={streams}
 				ItemSeparatorComponent={() => <View className='w-3' />}
 				renderItem={renderItem}

@@ -9,18 +9,18 @@ import Button from '@/src/components/Atoms/Button'
 import Typography from '@/src/components/Atoms/Typography'
 
 // Type Imports
-import { IMainSliderMovie } from '@/src/types/movie-types'
+import { IMainSliderStream } from '@/src/types/stream-types'
 
 type IMainSlideProps = {
-	movie: IMainSliderMovie
+	stream: IMainSliderStream
 }
 
-const MainSlide = ({ movie }: IMainSlideProps) => {
+const MainSlide = ({ stream }: IMainSlideProps) => {
 	const { width } = useWindowDimensions()
 
 	return (
 		<ImageBackground
-			source={movie.poster}
+			source={stream.poster}
 			resizeMode='cover'
 			style={{ width: Math.floor(width) - 40 }}
 			className='flex-1 rounded-2xl mr-4 overflow-hidden'
@@ -31,10 +31,10 @@ const MainSlide = ({ movie }: IMainSlideProps) => {
 					weight='bold'
 					alignment='center'
 				>
-					{movie.text}
+					{stream.text}
 				</Typography>
 				<View className='flex-row items-center justify-center gap-2'>
-					{movie.genres.map((genre: string, index: number) => (
+					{stream.genres.map((genre: string, index: number) => (
 						<Fragment key={genre}>
 							<Typography
 								size='sm'
@@ -42,7 +42,7 @@ const MainSlide = ({ movie }: IMainSlideProps) => {
 							>
 								{genre}
 							</Typography>
-							{index !== movie.genres.length - 1 && (
+							{index !== stream.genres.length - 1 && (
 								<Typography
 									color='off-white'
 									weight='bold'
