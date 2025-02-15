@@ -78,6 +78,7 @@ const Series = () => {
 					<NowOnMuxx stream={nowOnMuxxSerie} />
 					{generateRandomGenres(6).map(genre => (
 						<StreamSlider<IRandomGenreStream>
+							key={genre}
 							title={`${genre} Series`}
 							streams={randomGenreSeries}
 							renderItem={({ item }) => <GenreSlide stream={item} />}
