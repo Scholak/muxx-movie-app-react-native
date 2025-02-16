@@ -1,5 +1,4 @@
 // Package Imports
-import { Href } from 'expo-router'
 import { ImageBackground, View } from 'react-native'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
@@ -15,11 +14,7 @@ type INowOnMuxxProps = {
 }
 
 const NowOnMuxx = ({ stream }: INowOnMuxxProps) => {
-	const handlePlayMovie = (): Href => {
-		if (stream.type === 'movie') return `/movies/${stream.id}`
-		else if (stream.type === 'serie') return `/series/${stream.id}`
-		else return '/home'
-	}
+	const handlePlayMovie = () => {}
 
 	return (
 		<View className='w-full mt-4'>

@@ -1,6 +1,21 @@
+// Package Imports
 import { ImageSourcePropType } from 'react-native'
 
 export type IStreamType = 'movie' | 'serie'
+
+export type ICast = {
+	id: string
+	name: string
+	character: string
+	poster: ImageSourcePropType
+}
+
+export type IRelatedStream = {
+	id: string
+	poster: ImageSourcePropType
+	title: string
+	type: 'movie' | 'serie'
+}
 
 export type IMainSliderStream = {
 	id: string

@@ -1,11 +1,14 @@
 // Package Imports
-import { Href, Link } from 'expo-router'
+import { Link } from 'expo-router'
 import { Pressable, ImageBackground, View } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
 // Component Imports
 import Typography from '@/src/components/Atoms/Typography'
+
+// Utility Imports
+import { generateStreamLink } from '@/src/utils/generate-stream-link'
 
 // Type Imports
 import { IContinueWatchingStream, IStreamType } from '@/src/types/stream-types'
@@ -16,15 +19,9 @@ type IContinueWatchingSlideProps = {
 }
 
 const ContinueWatchingSlide = ({ stream, onRemove }: IContinueWatchingSlideProps) => {
-	const getStreamLink = (): Href => {
-		if (stream.type === 'movie') return `/movies/${stream.id}`
-		else if (stream.type === 'serie') return `/series/${stream.id}`
-		else return '/home'
-	}
-
 	return (
 		<Link
-			href={getStreamLink()}
+			href={generateStreamLink(stream.type, stream.id)}
 			asChild
 		>
 			<Pressable className='relative w-36 gap-2'>

@@ -1,6 +1,8 @@
 // Package Imports
 import { z, ZodIssue } from 'zod'
-import { customValidationMessage } from './custom-validation-message'
+
+// Utility Imports
+import { customValidationMessage } from '@/src/utils/custom-validation-message'
 
 type ISamePasswordValidationData = {
 	password: string

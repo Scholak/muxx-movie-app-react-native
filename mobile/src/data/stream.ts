@@ -1,9 +1,12 @@
+// Type Imports
 import {
-	IContinueWatchingStream,
-	IForYouSlideStream,
 	INowOnMuxxStream,
+	IForYouSlideStream,
 	IRandomGenreStream,
-} from '../types/stream-types'
+	IContinueWatchingStream,
+} from '@/src/types/stream-types'
+
+// Asset Imports
 const bg = require('@/src/assets/images/bg-image.png')
 
 export const continueWatching: IContinueWatchingStream[] = [

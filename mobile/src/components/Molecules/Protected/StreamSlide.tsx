@@ -1,6 +1,9 @@
 // Package Imports
-import { Href, Link } from 'expo-router'
+import { Link } from 'expo-router'
 import { Pressable, Image } from 'react-native'
+
+// Utility Imports
+import { generateStreamLink } from '@/src/utils/generate-stream-link'
 
 // Type Imports
 import { ISliderMovie } from '@/src/types/movie-types'
@@ -11,15 +14,9 @@ type IStreamSlideProps = {
 }
 
 const StreamSlide = ({ stream, type }: IStreamSlideProps) => {
-	const getStreamLink = (): Href => {
-		if (type === 'movie') return `/movies/${stream.id}`
-		else if (type === 'serie') return `/series/${stream.id}`
-		else return '/home'
-	}
-
 	return (
 		<Link
-			href={getStreamLink()}
+			href={generateStreamLink(type, stream.id)}
 			asChild
 		>
 			<Pressable>

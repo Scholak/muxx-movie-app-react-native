@@ -1,6 +1,9 @@
 // Package Imports
-import { Href, Link } from 'expo-router'
+import { Link } from 'expo-router'
 import { Pressable, useWindowDimensions, Image } from 'react-native'
+
+// Utility Imports
+import { generateStreamLink } from '@/src/utils/generate-stream-link'
 
 // Type Imports
 import { IRandomGenreStream } from '@/src/types/stream-types'
@@ -12,15 +15,9 @@ type IGenreSlideProps = {
 const GenreSlide = ({ stream }: IGenreSlideProps) => {
 	const { width } = useWindowDimensions()
 
-	const getStreamLink = (): Href => {
-		if (stream.type === 'movie') return `/movies/${stream.id}`
-		else if (stream.type === 'serie') return `/series/${stream.id}`
-		else return '/home'
-	}
-
 	return (
 		<Link
-			href={getStreamLink()}
+			href={generateStreamLink(stream.type, stream.id)}
 			asChild
 		>
 			<Pressable style={{ width: Math.floor(width * 0.275) }}>

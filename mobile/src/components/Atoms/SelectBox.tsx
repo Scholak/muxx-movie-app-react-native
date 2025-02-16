@@ -44,7 +44,7 @@ const SelectBox = ({ options, selected, onSelect }: ISelectBoxProps) => {
 	}
 
 	return (
-		<View className='relative w-full h-14 bg-dark-gray rounded-2xl'>
+		<View className='relative w-full h-14 bg-dark-gray rounded-2xl z-10'>
 			<Pressable onPress={() => setOpen(!open)}>
 				<View className='p-4 flex-row justify-between items-center'>
 					<Text className='text-white'>{selected.label}</Text>
